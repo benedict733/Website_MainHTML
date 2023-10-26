@@ -137,6 +137,12 @@
                         <code>
                             [print("Fizz"*(i%3==0)+"Buzz"*(i%5==0) or i) for i in range(101)]
                         </code>
+                        <b>OR</b>
+                        <code>
+                            lst = ["Fizz"*(i%3==0)+"Buzz"*(i%5==0) or i for i in range(101)]
+                            for i in lst:
+                                print(i)
+                        </code>
                     </pre>
                 </details>
 
