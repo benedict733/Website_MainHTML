@@ -2,12 +2,24 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="description" content="Simple demo Web page for CSE 134B" />
+
+        <!-- Facebook SEO Meta Tags -->
+        <meta property="og:url" content="index.html" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Benedict's Webpage" />
+        <meta property="og:description" content="Personal Portfolio Page" />
+
+        <meta name="description" content="Personal portfolio webpage using only HTML" />
         <meta name="keywords" content="HTML, CSS, JavaScript" />
-        <meta name="author" content="" />
+        <meta name="author" content="Benedict Tan" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CSE 134B Homework 1 Website</title>
-        <!-- <link href="images/favicon.ico" rel="icon" /> -->
+        <title>Benedict's Personal Portfolio</title>
+        <link href="images/favicon.ico" rel="icon" />
+        <style>
+            body {
+                border: 1px solid black;
+            }
+        </style>
         <script>
             window.addEventListener('load', function () {
                 let time = window.performance.timing,
@@ -20,7 +32,149 @@
 
     <body>
         <header>
-            <h1> Benedict's Website</h1>
+            <h1> Benedict's Personal Portfolio</h1>
+            <figure>
+                <img src="images/Benedict_Shark.jpg" alt="image of Benedict being eaten up by a shark statue" height="200" width="200">
+                <figcaption>Picture of Benedict being eaten up by a shark statue</figcaption>
+            </figure>
+            <nav>
+                <ol>
+                    <li>
+                        <a href="About-Me">About Me</a>
+                    </li>
+                    <li>
+                        <a href="Skills">Skills</a>
+                    </li>
+                    <li>
+                        <a href="Projects">Projects</a>
+                    </li>
+                    <li>
+                        <a href="Testing-HTML-Elements">Testing HTML Elements</a>
+                    </li>
+                    <li>
+                        <a href="Contact-Me">Contact Me</a>
+                    </li>
+                </ol>
+            </nav>
         </header>
+
+        <main>
+            <section id="About-Me">
+                <h2>About Me</h2>
+                <p>
+                    I am an inquisitive, passionate <strong>Penultimate Business Analytics</strong> undergraduate 
+                    in NUS, exploring my interests in software engineering and data science. 
+                </p>
+                <aside>
+                    <h3>Future Prospects</h3>
+                    <p>
+                        I am currently seeking an internship opportunity to leverage my programming skills in 
+                        <em>software development or big data and machine learning</em>. Bringing forth a motivated 
+                        attitude and a hunger to learn and do my best.
+                    </p>
+                </aside>
+            </section>
+            <br>
+            <section id="Skills">
+                <h2>Skills</h2>
+                <table>
+                    <caption>
+                        <b>
+                            <u>Skills listed may not be up to date</u>
+                        </b>
+                    </caption>
+                    <colgroup></colgroup>
+                </table>
+            </section>
+            <br>
+            <section id="Projects">
+                <h2>Projects</h2>
+            </section>
+            <br>
+            <section id="Testing-HTML-Elements">
+                <h2>Testing HTML Elements</h2>
+                <details>
+                    <summary>Audio sample</summary>
+                    <audio controls>
+                        <source src="assets/test_recording.mp3" type="audio/mp3">
+                    </audio>
+                </details>
+                <details>
+                    <summary>Video sample</summary>
+                    <video controls height="400">
+                        <source src="assets/billiards_break.mp4" type="video/mp4">
+                    </video>
+                </details>
+                <details>
+                    <summary>Using MathML to write the formula for Einstein's famous formula:</summary>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <msup>
+                              <mi>E = mc</mi>
+                              <mn>2</mn>
+                            </msup>
+                          </mrow>
+                        </math>
+                </details>
+                <details>
+                    <summary>Circle using svg tag</summary>
+                    <svg height="100" width="100">
+                        <circle cx="30" cy="30" r="20" fill="skyblue"></circle>
+                    </svg>
+                </details>
+
+            </section>
+            <br>
+            <section id="Contact-Me">
+                <h2>Contact Me</h2>
+                <form>
+                    <fieldset>
+                        <legend>Connect with me</legend>
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="Your Name...">
+                        <br>                        
+                        <label for="email">Your Email</label>
+                        <input type="text">
+                        <br>
+                        <label for="group">Select which group best represents you</label>
+                        <select id="group">
+                            <optgroup label="Occupation">
+                                <option value="student">Student</option>
+                                <option value="educator">Educator</option>
+                                <option value="recruiter">Recruiter</option>
+                                <option value="others">Others</option>
+                            </optgroup>
+                        </select>
+                        <br>
+                        <label for="continent">Select your continent</label>
+                        <input list="continents" id="continent" name="continent">
+                        <datalist id="continents">
+                            <option value="Asia"></option>
+                            <option value="Africa"></option>
+                            <option value="North America"></option>
+                            <option value="South America"></option>
+                            <option value="Antarctica"></option>
+                            <option value="Europe"></option>
+                            <option value="Australia"></option>
+                        </datalist>
+                        <br>
+                        <label for="comments">Any remarks</label>
+                        <br>
+                        <textarea>Your remarks here...</textarea>
+                        <br>
+                        <button type="submit">Save</button>
+                    </fieldset>
+                </form>
+                <br>
+                <details>
+                    <summary>Hello!</summary>
+                    If this is your first time here, please share this with your friends!
+                </details>
+            </section>
+        </main>
+
+        <footer>
+            <p>Created by Benedict Tan &spadesuit;</p>
+        </footer>
     </body>
 </html>
