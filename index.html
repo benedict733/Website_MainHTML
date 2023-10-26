@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="Simple demo Web page for CSE 134B" />
+        <meta name="keywords" content="HTML, CSS, JavaScript" />
+        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSE 134B Homework 1 Website</title>
+        <!-- <link href="images/favicon.ico" rel="icon" /> -->
+        <script>
+            window.addEventListener('load', function () {
+                let time = window.performance.timing,
+                    complete = time.domComplete - time.domLoading;
+                document.getElementById('page-load-info').innerHTML = `<strong>Page Loaded in ${parseInt(complete)}ms
+                 on ${new Date().toLocaleString("en-US")}</strong>`;
+            });
+        </script>
+    </head>
+
+    <body>
+        <header>
+            <h1> Benedict's Website</h1>
+        </header>
+    </body>
+</html>
