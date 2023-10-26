@@ -57,6 +57,7 @@
                 </ol>
             </nav>
         </header>
+        <hr>
 
         <main>
             <section id="About-Me">
@@ -106,6 +107,19 @@
                     </video>
                 </details>
                 <details>
+                    <summary>Circle using svg tag</summary>
+                    <svg height="100" width="100">
+                        <circle cx="50" cy="50" r="50" fill="skyblue"></circle>
+                    </svg>
+                </details>
+                <details>
+                    <summary>Picture sample</summary>
+                    <picture>
+                        <source type="image/png" srcset="images/personal_logo.png">
+                        <img src="images/personal_logo.png" alt="Personal Logo of Benedict" height="100">
+                    </picture>
+                </details>
+                <details>
                     <summary>Using MathML to write the formula for Einstein's famous formula:</summary>
                     <math xmlns="http://www.w3.org/1998/Math/MathML">
                         <mrow>
@@ -117,18 +131,15 @@
                         </math>
                 </details>
                 <details>
-                    <summary>Circle using svg tag</summary>
-                    <svg height="100" width="100">
-                        <circle cx="30" cy="30" r="20" fill="skyblue"></circle>
-                    </svg>
+                    <summary>Python code sample for FizzBuzz</summary>
+                    Trust me, this one liner Python code works
+                    <pre>
+                        <code>
+                            [print("Fizz"*(i%3==0)+"Buzz"*(i%5==0) or i) for i in range(101)]
+                        </code>
+                    </pre>
                 </details>
-                <details>
-                    <summary>Picture sample</summary>
-                    <picture>
-                        <source type="image/png" srcset="images/personal_logo.png">
-                        <img src="images/personal_logo.png" alt="Personal Logo of Benedict">
-                    </picture>
-                </details>
+
             </section>
             <br>
             <section id="Contact-Me">
