@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form (No JavaScript)</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+    <div class="example-form">
+        <h1 id="Example Form">Example Form</h1>
+        <form action="https://httpbin.org/post" method="post">
+
+            <!-- Name Input -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required minlength="2" maxlength="50">
+
+            <!-- Email Input -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <!-- Comments Input -->
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" rows="4" required minlength="10" maxlength="500" pattern="[a-zA-Z0-9.,!? ]+"></textarea>
+
+            <!-- Hidden Field for Possible Bot -->
+            <input type="hidden" id="possible_bot" name="possible_bot" value="true">
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+
+            <!-- Output for Errors -->
+            <output for="name" class="error"></output>
+            <output for="email" class="error"></output>
+            <output for="comments" class="error"></output>
+
+            <!-- Output for Information -->
+            <output class="success"></output>
+
+        </form>
+    </div>
+
+</body>
+</html>

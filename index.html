@@ -50,6 +50,9 @@
                     <li>
                         <a href="Contact-Me">Contact Me</a>
                     </li>
+                    <li>
+                        <a href="Example Form">Example Form</a>
+                    </li>
                 </ol>
             </nav>
         </header>
@@ -190,6 +193,26 @@
                     If this is your first time here, please share this with your friends!
                 </details>
             </section>
+            <br>
+            <section id="Example Form">
+                <div class="example-form">
+                <h2>Example Form</h2>
+                <form action="https://httpbin.org/post" method="post">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <br>
+                    <label for="comments">Comments:</label>
+                    <textarea id="comments" name="comments" rows="4" required></textarea>
+                    <br>
+                    <input type="hidden" id="possible_bot" name="possible_bot" value="true">
+                    <button type="submit">Submit</button>
+                </form>
+                </div>
+            </section>
+            <br>
         </main>
 
         <footer>
