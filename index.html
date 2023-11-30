@@ -195,21 +195,27 @@
             </section>
             <br>
             <section id="Example Form">
-                <div class="example-form">
+                <div class="form-container">
                 <h2>Example Form</h2>
-                <form action="https://httpbin.org/post" method="post">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    <br>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    <br>
-                    <label for="comments">Comments:</label>
-                    <textarea id="comments" name="comments" rows="4" required></textarea>
-                    <br>
-                    <input type="hidden" id="possible_bot" name="possible_bot" value="true">
-                    <button type="submit">Submit</button>
-                </form>
+                    <form id="exampleForm" action="https://httpbin.org/post" method="post">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required minlength="2" maxlength="50">
+                        <br>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                        <br>
+                        <label for="comments">Comments:</label>
+                        <textarea id="comments" name="comments" rows="4" required minlength="10" maxlength="500" pattern="[a-zA-Z0-9.,!? ]+"></textarea>
+                        <br>
+                        <input type="hidden" id="possible_bot" name="possible_bot" value="true">
+                        <button type="submit">Submit</button>
+
+                        <output for="name" class="error"></output>
+                        <output for="email" class="error"></output>
+                        <output for="comments" class="error"></output>
+
+                        <output class="success"></output>
+                    </form>
                 </div>
             </section>
             <br>
@@ -218,5 +224,37 @@
         <footer>
             <p>Created by Benedict Tan &spadesuit;</p>
         </footer>
+
+        <script>
+            document.getElementById('exampleForm').addEventListener('submit', function(event) {
+                var form = event.target;
+    
+                // Check the validity of each field
+                if (!form.checkValidity()) {
+                    // Prevent form submission if any field is invalid
+                    event.preventDefault();
+    
+                    // Display custom error messages
+                    displayError('name', 'Please enter a valid name.');
+                    displayError('email', 'Please enter a valid email address.');
+                    displayError('comments', 'Please enter valid comments.');
+                }
+            });
+    
+            // Function to display custom error messages
+            function displayError(fieldId, message) {
+                var field = document.getElementById(fieldId);
+                var errorOutput = document.querySelector('output[for="' + fieldId + '"].error');
+    
+                if (!field.checkValidity()) {
+                    // If field is invalid, set custom error message
+                    field.setCustomValidity(message);
+                    form.reportValidity();
+                }
+    
+                // Display the error message
+                errorOutput.textContent = message;
+            }
+        </script>
     </body>
 </html>
