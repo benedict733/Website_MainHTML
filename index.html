@@ -51,7 +51,10 @@
                         <a href="Contact-Me">Contact Me</a>
                     </li>
                     <li>
-                        <a href="Example Form">Example Form</a>
+                        <a href="Example-Form">Example Form</a>
+                    </li>
+                    <li>
+                        <a href="Rating-Widget">Rating Widget</a>
                     </li>
                 </ol>
             </nav>
@@ -196,7 +199,7 @@
                 </details>
             </section>
             <br>
-            <section id="Example Form">
+            <section id="Example-Form">
                 <div class="form-container">
                 <h2>Example Form</h2>
                     <form id="exampleForm" action="https://httpbin.org/post" method="post">
@@ -222,120 +225,33 @@
                 </div>
             </section>
             <br>
+            <section id="Rating-Widget">
+                <h2>Rating Widget</h2>
+                <rating-widget max="5" value="0"></rating-widget>
+                <noscript>
+                    <!-- Show the form when JS is disabled -->
+                    <form action="https://httpbin.org/post" method="POST">
+                        <label for="rating">How satisfied are you?</label>
+                        <!-- <input type="hidden" name="question" value="How satisfied are you?"> -->
+                        <select id="rating" name="rating" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <input type="hidden" name="sentBy" value="NoJS">
+                        <button type="submit">Submit</button>
+                    </form>
+                </noscript>
+            </section>
+            <br>
         </main>
 
         <footer>
             <p>Created by Benedict Tan &spadesuit;</p>
         </footer>
 
-        <script>
-            // Check if a theme is already set in localStorage
-            var savedTheme = localStorage.getItem('theme');
-
-            if (savedTheme) {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-            }
-
-            function toggleTheme() {
-            // Toggle between light and dark themes
-            var currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-            var newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-            // Update the HTML attribute and localStorage
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-}
-
-            var formErrors = [];
-
-            document.getElementById('exampleForm').addEventListener('submit', function(event) {
-                // var form = event.target;
-    
-                // // Check the validity of each field
-                // if (!form.checkValidity()) {
-                //     // Prevent form submission if any field is invalid
-                //     event.preventDefault();
-    
-                //     // Display custom error messages
-                //     displayError('name', 'Please enter a valid name.');
-                //     displayError('email', 'Please enter a valid email address.');
-                //     displayError('comments', 'Please enter valid comments.');
-                // }
-
-                // Add form errors to the formErrors array
-                formErrors.push({ field: 'name', message: document.getElementById('name').validationMessage });
-                formErrors.push({ field: 'email', message: document.getElementById('email').validationMessage });
-                formErrors.push({ field: 'comments', message: document.getElementById('comments').validationMessage });
-
-                // Attach the form-errors as a hidden field
-                var formErrorsInput = document.createElement('input');
-                formErrorsInput.type = 'hidden';
-                formErrorsInput.name = 'form-errors';
-                formErrorsInput.value = JSON.stringify(formErrors);
-
-                // Append the hidden field to the form
-                event.target.appendChild(formErrorsInput);
-            });
-    
-            // Function to display custom error messages
-            function displayError(fieldId, message) {
-                var field = document.getElementById(fieldId);
-                var errorOutput = document.querySelector('output[for="' + fieldId + '"].error');
-    
-                if (!field.checkValidity()) {
-                    // If field is invalid, set custom error message
-                    field.setCustomValidity(message);
-                    form.reportValidity();
-                }
-    
-                // Display the error message
-                errorOutput.textContent = message;
-
-                // Fade out the error message 
-                setTimeout(function() {
-                    errorOutput.textContent = '';
-                }, 3);
-            }
-
-            // Function to validate input against the specified pattern
-            function validateInput(input, fieldId) {
-                var pattern = new RegExp(input.pattern);
-                var inputValue = input.value;
-
-                if (!pattern.test(inputValue)) {
-                    // Flash the field and present a message for illegal character
-                    input.classList.add('error-flash');
-
-                    // Display a message in the error message area
-                    displayError(fieldId, 'Illegal character entered.');
-
-                    // Remove the error class and reset the field after a few moments
-                    setTimeout(function() {
-                        input.classList.remove('error-flash');
-                        input.value = inputValue.replace(/[^a-zA-Z0-9.,!? ]+/g, '');
-                    }, 3); // Adjust the timeout value as needed
-                }
-
-                // Update the character countdown in the info message area
-                updateCharacterCount(input, fieldId);
-            }
-
-            // Function to update character countdown
-            function updateCharacterCount(input, fieldId) {
-                var infoOutput = document.querySelector('output[for="' + fieldId + '"].info');
-                var remainingCharacters = input.maxLength - input.value.length;
-
-                infoOutput.textContent = 'Characters remaining: ' + remainingCharacters;
-
-                // Change style based on the remaining characters
-                if (remainingCharacters <= 20) {
-                    infoOutput.classList.add('warn');
-                }
-
-                if (remainingCharacters <= 10) {
-                    infoOutput.classList.add('error');
-                }
-            }
-        </script>
+        <script src="script.js"></script>
     </body>
 </html>

@@ -22,6 +22,29 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.rating-widget {
+    display: flex;
+    flex-direction: row;
+}
+
+.star {
+    font-size: 2em;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.star:hover,
+.star.active,
+.star.hover {
+    color: #f8d825;
+}
+
+.message {
+    font-size: 1.2em;
+    margin-top: 10px;
+    color: var(--text-color);
+}
+
 form {
     display: flex;
     flex-direction: column;
