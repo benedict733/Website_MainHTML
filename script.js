@@ -1,3 +1,61 @@
+class UCSDWeather extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({ mode: 'open' });
+    }
+  
+    connectedCallback() {
+      this.render();
+      this.fetchWeather();
+    }
+  
+    render() {
+      this.shadowRoot.innerHTML = `
+        <style>
+          /* Add your styles for the weather widget here */
+        </style>
+        <div id="weather-widget">
+          <h3>UCSD Weather</h3>
+          <p id="temperature"></p>
+          <p id="conditions"></p>
+          <img src="/images/weather.png" id="weather-icon" alt="Weather Icon">
+        </div>
+      `;
+    }
+  
+    async fetchWeather() {
+    //   const apiKey = ''; // Add your API key here if required by the National Weather Service API
+        const latitude = 32.87083;
+        const longitude = -117.25083;
+        const apiUrl = `https://api.weather.gov/points/${latitude},${longitude}`;
+    
+        try {
+            const response = await fetch(apiUrl, { headers: { 'User-Agent': 'YourApp/1.0' } });
+            const data = await response.json();
+    
+            // Extract relevant weather information
+            const forecastUrl = data.properties.forecast;
+            const forecastResponse = await fetch(forecastUrl, { headers: { 'User-Agent': 'YourApp/1.0' } });
+            const forecastData = await forecastResponse.json();
+
+            // Extract relevant weather information
+            const temperature = forecastData.properties.periods[0].temperature;
+            const conditions = forecastData.properties.periods[0].shortForecast;
+            // const iconUrl = data.properties.periods[0].icon;
+    
+            // Update the widget with the weather information
+            this.shadowRoot.getElementById('temperature').textContent = `Temperature: ${temperature}°F`;
+            this.shadowRoot.getElementById('conditions').textContent = `Conditions: ${conditions}`;
+            // this.shadowRoot.getElementById('weather-icon').src = iconUrl;
+        } catch (error) {
+            console.error('Error fetching weather data:', error);
+        }
+    }
+  }
+  
+  customElements.define('ucsd-weather', UCSDWeather);  
+
+  
 class RatingWidget extends HTMLElement {
     connectedCallback() {
         const maxStars = parseInt(this.getAttribute('max')) || 5;
@@ -106,6 +164,7 @@ class RatingWidget extends HTMLElement {
 }
 
 customElements.define('rating-widget', RatingWidget);
+
 
 // Check if a theme is already set in localStorage
 var savedTheme = localStorage.getItem('theme');
